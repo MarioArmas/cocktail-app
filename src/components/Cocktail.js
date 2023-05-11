@@ -1,18 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react'
+import { useLocalStorage } from '../hooks/localstorage'
 import './Cocktail.css'
 
-export default function Cocktail() {
+export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php' }) {
   const [like, setLike] = useState(false)
+  const [likeDisabled, setLikeDisaled] = useState(false)
   const [modal, setModal] = useState(false)
   const [cocktail, setCocktail] = useState({})
+  const [favorites, setFavorites] = useLocalStorage('favorites', [])
   const modalRef = useRef()
-
+  
   console.log(cocktail)
   useEffect(() => {
-    fetch('https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=11007')
+    fetch(id)
     .then(response => response.json())
     .then(data => setCocktail(data.drinks[0]))
-  }, [])
+    .catch(error => console.log(error))
+  }, [id])
+
+  useEffect(() => {
+    if (favorites.includes(cocktail.idDrink)) setLike(true)
+  }, [cocktail.idDrink])
+
+  const handleLike = (e) => {
+    e.preventDefault()
+    setLikeDisaled(true)
+    setLike(prev => !prev)
+    
+    !like
+      ? setFavorites([...new Set([...favorites, cocktail.idDrink])])
+      : setFavorites([...new Set(favorites.filter((id) => id !== cocktail.idDrink))])
+    
+    setLikeDisaled(false)
+  }
 
   return (
     <>
@@ -24,8 +44,8 @@ export default function Cocktail() {
         </div>
         {
           like
-          ? <i className='fas fa-heart'></i>
-          : <i className='far fa-heart'></i>
+          ? <i className='fas fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
+          : <i className='far fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
         }
         <div className='disclaimer'>
           {cocktail.strAlcoholic}
@@ -39,7 +59,9 @@ export default function Cocktail() {
                 <div className='data'>
                   <img src={cocktail.strDrinkThumb} alt='' />
                     {
-                      like ? <i className='fas fa-heart'></i> : <i className='far fa-heart'></i>
+                      like
+                        ? <i className='fas fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
+                        : <i className='far fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
                     }
                   <div className='category'>
                     {cocktail.strCategory}

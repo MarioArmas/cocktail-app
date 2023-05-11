@@ -29,7 +29,7 @@
   display: inline-block;
   overflow: hidden;
   white-space: nowrap;
-  width: 50%;
+  width: 70%;
   margin: 0;
 }
 
@@ -52,6 +52,7 @@
 .far.fa-heart {
   font-size: 1.5rem;
   color: #6AFFDD;
+  cursor: pointer;
 }
 
 .cocktail-container .fas.fa-heart,
@@ -90,7 +91,8 @@
 .cocktail-modal-content {
   position: relative;
   width: 80%;
-  margin: 15% auto;
+  max-width: 800px;
+  margin: 8em auto;
   background-color: #fff;
   padding: 1em 3em;
 }

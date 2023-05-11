@@ -22,3 +22,18 @@ a {
   font-style: none;
   text-decoration: none;
 }
+
+.main-container {
+  background-color: #0cbaba;
+  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
+  width: 100%;
+  min-height: 100vh;
+  padding-bottom: 5em;
+}
+
+.main-container h1 {
+  text-align: center;
+  color: #fff;
+  font-size: 3rem;
+  font-weight: 700;
+}

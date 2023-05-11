@@ -1,17 +1,3 @@
-.main-container {
-  background-color: #0cbaba;
-  background-image: linear-gradient(315deg, #0cbaba 0%, #380036 74%);
-  width: 100%;
-  min-height: 100vh;
-}
-
-.main-container h1 {
-  text-align: center;
-  color: #fff;
-  font-size: 3rem;
-  font-weight: 700;
-}
-
 .main-container .cards-container {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -20,4 +6,5 @@
   column-gap: 2em;
   width: 80%;
   margin: 0 auto;
+  padding: 2em 0;
 }
