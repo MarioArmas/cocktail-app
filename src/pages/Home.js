@@ -5,7 +5,7 @@ import './Home.css'
 export default function Home() {
   return (
     <>
-      <h1>Cocktails</h1>
+      <h1>Random Cocktail</h1>
       <div className='cards-container'>
         <Cocktail />
       </div>

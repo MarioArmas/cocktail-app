@@ -9,8 +9,7 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
   const [cocktail, setCocktail] = useState({})
   const [favorites, setFavorites] = useLocalStorage('favorites', [])
   const modalRef = useRef()
-  
-  console.log(cocktail)
+
   useEffect(() => {
     fetch(id)
     .then(response => response.json())
@@ -40,7 +39,7 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
         <img src={cocktail.strDrinkThumb} alt='' />
         <div className='details'>
           <h3>{cocktail.strDrink}</h3>
-          <div className='link' onClick={() => setModal(true)}>see more</div>
+          <div className='link' onClick={() => setModal(true)}>See More</div>
         </div>
         {
           like

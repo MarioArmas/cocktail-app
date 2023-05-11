@@ -8,13 +8,20 @@
   background-color: rgba(255, 255, 255, 0.1);
 }
 
+.navbar .links {
+  display: flex;
+  margin: 0 1em;
+  gap: 3em;
+}
+
 .navbar a {
+  font-size: 1.25rem;
   color: #fff;
 }
 
 .navbar a:hover {
   text-decoration: underline;
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .navbar .input-container {

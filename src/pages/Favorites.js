@@ -8,7 +8,7 @@ export default function Favorites() {
 
   return (
     <>
-      <h1>Favorites</h1>
+      <h1>Favorite Cocktails</h1>
       <div className='cards-container'>
         {
           favorites.length !== 0 ?
