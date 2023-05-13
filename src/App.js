@@ -1,8 +1,9 @@
 import './App.css'
+import { Route } from 'wouter'
 import Home from './pages/Home'
 import Favorites from './pages/Favorites'
+import Search from './pages/Search'
 import Navbar from './layouts/Navbar'
-import { Route } from 'wouter'
 
 function App() {
   return (
@@ -10,6 +11,9 @@ function App() {
       <Navbar />
       <Route path='/' component={Home} />
       <Route path='/MyCocktails' component={Favorites} />
+      <Route path='/search/:keyword'>
+        {({ keyword }) => <Search search={keyword} />}
+      </Route>
     </div>
   )
 }

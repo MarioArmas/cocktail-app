@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import { useLocalStorage } from '../hooks/localstorage'
 import './Cocktail.css'
 
-export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php' }) {
+export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php', object }) {
   const [like, setLike] = useState(false)
   const [likeDisabled, setLikeDisaled] = useState(false)
   const [modal, setModal] = useState(false)
@@ -11,10 +11,14 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
   const modalRef = useRef()
 
   useEffect(() => {
-    fetch(id)
-    .then(response => response.json())
-    .then(data => setCocktail(data.drinks[0]))
-    .catch(error => console.log(error))
+    if (object == null){
+      fetch(id)
+      .then(response => response.json())
+      .then(data => setCocktail(data.drinks[0]))
+      .catch(error => console.log(error))
+    } else {
+      setCocktail(object)
+    }
   }, [id])
 
   useEffect(() => {
