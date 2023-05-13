@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useLocalStorage } from '../hooks/localstorage'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 import './Cocktail.css'
 
 export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php', object }) {

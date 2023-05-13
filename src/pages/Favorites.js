@@ -1,6 +1,6 @@
 import React from 'react'
 import Cocktail from '../components/Cocktail'
-import { useLocalStorage } from '../hooks/localstorage'
+import { useLocalStorage } from '../hooks/useLocalStorage'
 import './Favorites.css'
 
 export default function Favorites() {
