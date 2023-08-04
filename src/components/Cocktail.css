@@ -48,15 +48,13 @@
   text-decoration: underline;
 }
 
-.fas.fa-heart,
-.far.fa-heart {
+.heart-icon {
   font-size: 1.5rem;
   color: #6AFFDD;
   cursor: pointer;
 }
 
-.cocktail-container .fas.fa-heart,
-.cocktail-container .far.fa-heart {
+.cocktail-container .heart-icon {
   position: absolute;
   top: 1.3em;
   right: 1.3em;
@@ -121,12 +119,12 @@
   object-position: center;
 }
 
-.fas.fa-times {
+.close-icon {
   font-size: 1.5rem;
   color: #6AFFDD;
 }
 
-.cocktail-modal-content .fas.fa-times {
+.cocktail-modal-content .close-icon {
   font-size: 1.5rem;
   color: #6AFFDD;
   position: absolute;
@@ -135,8 +133,9 @@
   cursor: pointer;
 }
 
-.cocktail-modal-content .fas.fa-times:hover {
-  opacity: 0.5;
+.heart-icon:hover,
+.close-icon:hover {
+  opacity: 0.8;
 }
 
 .category {
@@ -161,8 +160,7 @@
   transform: translateY(-100%);
 }
 
-.cocktail-modal-content .fas.fa-heart,
-.cocktail-modal-content .far.fa-heart {
+.cocktail-modal-content .heart-icon {
   position: absolute;
   top: 0.8em;
   right: 0.8em;

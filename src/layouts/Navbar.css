@@ -11,17 +11,16 @@
 .navbar .links {
   display: flex;
   margin: 0 1em;
-  gap: 3em;
 }
 
 .navbar a {
   font-size: 1.25rem;
+  padding: 0.2em 1em;
   color: #fff;
 }
 
 .navbar a:hover {
-  text-decoration: underline;
-  transform: scale(1.1);
+  background-color: rgba(255, 255, 255, 0.1);
 }
 
 .navbar .input-container {
@@ -35,7 +34,7 @@
   padding: 0.3em 1em;
 }
 
-.navbar i {
+.navbar .search-icon {
   font-size: 1.2rem;
   position: absolute;
   right: 1em;

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'wouter'
+import { SearchIcon } from '../components/Icons'
 import './Navbar.css'
 
 export default function Navbar() {
@@ -21,16 +22,12 @@ export default function Navbar() {
   return (
     <nav className='navbar'>
       <div className='links'>
-        <Link href='/'>
-          <a>Home</a>
-        </Link>
-        <Link href='/MyCocktails'>
-          <a>My Cocktails</a>
-        </Link>
+        <Link href='/'>Home</Link>
+        <Link href='/MyCocktails'>My Cocktails</Link>
       </div>
       <div className='input-container'>
         <input type='text' placeholder='Search' value={search} onChange={handleSearch} />
-        <i className='fas fa-search'></i>
+        <SearchIcon className='search-icon' />
       </div>
     </nav>
   )

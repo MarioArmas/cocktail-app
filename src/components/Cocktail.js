@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useLocalStorage } from '../hooks/useLocalStorage'
+import { Close, HeartIcon } from './Icons'
 import './Cocktail.css'
 
 export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php', object }) {
@@ -47,8 +48,8 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
         </div>
         {
           like
-          ? <i className='fas fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
-          : <i className='far fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
+          ? <HeartIcon className='heart-icon' fill={''} onClick={handleLike} disabled={likeDisabled} />
+          : <HeartIcon className='heart-icon' fill={'evenodd'} onClick={handleLike} disabled={likeDisabled} />
         }
         <div className='disclaimer'>
           {cocktail.strAlcoholic}
@@ -63,8 +64,8 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
                   <img src={cocktail.strDrinkThumb} alt='' />
                     {
                       like
-                        ? <i className='fas fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
-                        : <i className='far fa-heart' onClick={handleLike} disabled={likeDisabled}></i>
+                        ? <HeartIcon className='heart-icon' fill={''} onClick={handleLike} disabled={likeDisabled} />
+                        : <HeartIcon className='heart-icon' fill={'evenodd'} onClick={handleLike} disabled={likeDisabled} />
                     }
                   <div className='category'>
                     {cocktail.strCategory}
@@ -95,7 +96,7 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
                   </ul>
                 </div>
               </div>
-              <i className='fas fa-times' onClick={() => setModal(false)}></i>
+              <Close className={'close-icon'} onClick={() => setModal(false)} />
             </div>
           </div>
           : null
