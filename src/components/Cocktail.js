@@ -1,14 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
-import { useLocalStorage } from '../hooks/useLocalStorage'
 import { Close, HeartIcon } from './Icons'
 import './Cocktail.css'
 
-export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php', object }) {
+export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php', object, favorites, setFavorites }) {
   const [like, setLike] = useState(false)
   const [likeDisabled, setLikeDisaled] = useState(false)
   const [modal, setModal] = useState(false)
   const [cocktail, setCocktail] = useState({})
-  const [favorites, setFavorites] = useLocalStorage('favorites', [])
   const modalRef = useRef()
 
   useEffect(() => {
@@ -20,11 +18,11 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
     } else {
       setCocktail(object)
     }
-  }, [id])
+  }, [id, object])
 
   useEffect(() => {
     if (favorites.includes(cocktail.idDrink)) setLike(true)
-  }, [cocktail.idDrink])
+  }, [cocktail.idDrink, favorites])
 
   const handleLike = (e) => {
     e.preventDefault()
@@ -59,8 +57,8 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
         modal ?
           <div className='cocktail-modal' ref={modalRef} onClick={(e) => {if (e.target === modalRef.current) setModal(false)}}>
             <div className='cocktail-modal-content'>
-              <div className='main-content'>
-                <div className='data'>
+              <section className='main-content'>
+                <article className='data'>
                   <img src={cocktail.strDrinkThumb} alt='' />
                     {
                       like
@@ -73,8 +71,8 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
                   <div className='disclaimer'>
                     {cocktail.strAlcoholic}
                   </div>
-                </div>
-                <div className='recipe'>
+                </article>
+                <article className='recipe'>
                   <h3>{cocktail.strDrink}</h3>
                   <p>{cocktail.strInstructions}</p>
                   <ul>
@@ -94,8 +92,8 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
                     {cocktail.strIngredient14 ? <li>{cocktail.strIngredient14}: {cocktail.strMeasure14}</li> : null}
                     {cocktail.strIngredient15 ? <li>{cocktail.strIngredient15}: {cocktail.strMeasure15}</li> : null}
                   </ul>
-                </div>
-              </div>
+                </article>
+              </section>
               <Close className={'close-icon'} onClick={() => setModal(false)} />
             </div>
           </div>

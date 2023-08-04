@@ -9,15 +9,15 @@ export default function Favorites() {
   return (
     <>
       <h1>Favorite Cocktails</h1>
-      <div className='cards-container'>
+      <section className='cards-container'>
         {
           favorites.length !== 0 ?
             favorites.map(id => {
-              return <Cocktail key={id} id={`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`} />
+              return <Cocktail key={id} id={`https://www.thecocktaildb.com/api/json/v1/1/lookup.php?i=${id}`} favorites={favorites} setFavorites={setFavorites} />
             })
             : <h1>You have no cocktails in your favorites :(</h1>
         }
-      </div>
+      </section>
     </>
   )
 }
