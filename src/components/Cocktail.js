@@ -77,7 +77,7 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
                   <p>{cocktail.strInstructions}</p>
                   <ul>
                     {
-                      Array.from(Array(100).keys()).map((num) => {
+                      Array.from(Array(15).keys()).map((num) => {
                         return (
                           cocktail['strIngredient' + num]
                             ? <li>{cocktail['strIngredient' + num]}: {cocktail['strMeasure' + num]}</li>
