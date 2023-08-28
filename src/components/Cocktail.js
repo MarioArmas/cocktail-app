@@ -76,21 +76,15 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
                   <h3>{cocktail.strDrink}</h3>
                   <p>{cocktail.strInstructions}</p>
                   <ul>
-                    {cocktail.strIngredient1 ? <li>{cocktail.strIngredient1}: {cocktail.strMeasure1}</li> : null}
-                    {cocktail.strIngredient2 ? <li>{cocktail.strIngredient2}: {cocktail.strMeasure2}</li> : null}
-                    {cocktail.strIngredient3 ? <li>{cocktail.strIngredient3}: {cocktail.strMeasure3}</li> : null}
-                    {cocktail.strIngredient4 ? <li>{cocktail.strIngredient4}: {cocktail.strMeasure4}</li> : null}
-                    {cocktail.strIngredient5 ? <li>{cocktail.strIngredient5}: {cocktail.strMeasure5}</li> : null}
-                    {cocktail.strIngredient6 ? <li>{cocktail.strIngredient6}: {cocktail.strMeasure6}</li> : null}
-                    {cocktail.strIngredient7 ? <li>{cocktail.strIngredient7}: {cocktail.strMeasure7}</li> : null}
-                    {cocktail.strIngredient8 ? <li>{cocktail.strIngredient8}: {cocktail.strMeasure8}</li> : null}
-                    {cocktail.strIngredient9 ? <li>{cocktail.strIngredient9}: {cocktail.strMeasure9}</li> : null}
-                    {cocktail.strIngredient10 ? <li>{cocktail.strIngredient10}: {cocktail.strMeasure10}</li> : null}
-                    {cocktail.strIngredient11 ? <li>{cocktail.strIngredient11}: {cocktail.strMeasure11}</li> : null}
-                    {cocktail.strIngredient12 ? <li>{cocktail.strIngredient12}: {cocktail.strMeasure12}</li> : null}
-                    {cocktail.strIngredient13 ? <li>{cocktail.strIngredient13}: {cocktail.strMeasure13}</li> : null}
-                    {cocktail.strIngredient14 ? <li>{cocktail.strIngredient14}: {cocktail.strMeasure14}</li> : null}
-                    {cocktail.strIngredient15 ? <li>{cocktail.strIngredient15}: {cocktail.strMeasure15}</li> : null}
+                    {
+                      Array.from(Array(100).keys()).map((num) => {
+                        return (
+                          cocktail['strIngredient' + num]
+                            ? <li>{cocktail['strIngredient' + num]}: {cocktail['strMeasure' + num]}</li>
+                            : null
+                        )
+                      })
+                    }
                   </ul>
                 </article>
               </section>
