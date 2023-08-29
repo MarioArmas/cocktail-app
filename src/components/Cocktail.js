@@ -1,28 +1,38 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { Close, HeartIcon } from './Icons'
+import Spinner from './Spinner'
 import './Cocktail.css'
 
-export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php', object, favorites, setFavorites }) {
+export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/v1/1/random.php', object, favorites, setFavorites, reRender }) {
   const [like, setLike] = useState(false)
   const [likeDisabled, setLikeDisaled] = useState(false)
   const [modal, setModal] = useState(false)
   const [cocktail, setCocktail] = useState({})
   const modalRef = useRef()
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
+    const controller = new AbortController()
+
     if (object == null){
-      fetch(id)
-      .then(response => response.json())
-      .then(data => setCocktail(data.drinks[0]))
-      .catch(error => console.log(error))
+      fetch(id, { signal: controller.signal })
+        .then(response => response.json())
+        .then(data => setCocktail(data.drinks[0]))
+        .catch(error => console.log(error))
     } else {
       setCocktail(object)
     }
-  }, [id, object])
+
+    return () => controller.abort()
+  }, [id, object, reRender])
 
   useEffect(() => {
     if (favorites.includes(cocktail.idDrink)) setLike(true)
   }, [cocktail.idDrink, favorites])
+
+  useEffect(() => {
+    setLoading(true)
+  }, [reRender])
 
   const handleLike = (e) => {
     e.preventDefault()
@@ -39,7 +49,8 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
   return (
     <>
       <div className='cocktail-container'>
-        <img src={cocktail.strDrinkThumb} alt='' />
+        {loading && <Spinner />}
+        <img style={loading ? {display: 'none'} : {}} src={cocktail.strDrinkThumb} alt='' onLoad={() => setLoading(false)} />
         <div className='details'>
           <h3>{cocktail.strDrink}</h3>
           <div className='link' onClick={() => setModal(true)}>See More</div>
@@ -49,9 +60,12 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
           ? <HeartIcon className='heart-icon' fill={''} onClick={handleLike} disabled={likeDisabled} />
           : <HeartIcon className='heart-icon' fill={'evenodd'} onClick={handleLike} disabled={likeDisabled} />
         }
-        <div className='disclaimer'>
-          {cocktail.strAlcoholic}
-        </div>
+        {
+          !loading &&
+          <div className='disclaimer'>
+            {cocktail.strAlcoholic}
+          </div>
+        }
       </div>
       {
         modal ?
