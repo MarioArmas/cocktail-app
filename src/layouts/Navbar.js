@@ -6,7 +6,8 @@ import './Navbar.css'
 export default function Navbar() {
   const [search, setSearch] = useState('')
   const [location, setLocation] = useLocation()
-  
+  const isActiveStyles = { borderBottom: '3px solid #6AFFDD', color: '#6AFFDD' }
+
   const handleSearch = (e) => {
     setSearch(e.target.value)
   }
@@ -22,8 +23,8 @@ export default function Navbar() {
   return (
     <nav className='navbar'>
       <div className='links'>
-        <Link href='/'>Home</Link>
-        <Link href='/MyCocktails'>My Cocktails</Link>
+        <Link style={location === '/' ? isActiveStyles : {}} href='/'>Home</Link>
+        <Link style={location === '/MyCocktails' ? isActiveStyles : {}} href='/MyCocktails'>My Cocktails</Link>
       </div>
       <div className='input-container'>
         <input type='text' placeholder='Search' value={search} onChange={handleSearch} />

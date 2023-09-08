@@ -13,6 +13,7 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
 
   useEffect(() => {
     const controller = new AbortController()
+    setLike(false)
 
     if (object == null){
       fetch(id, { signal: controller.signal })

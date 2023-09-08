@@ -42,6 +42,7 @@
 
 .cocktail-container .link {
   cursor: pointer;
+  color: #6AFFDD;
 }
 
 .cocktail-container .link:hover {
@@ -92,6 +93,7 @@
   max-width: 800px;
   margin: 8em auto;
   background-color: #fff;
+  background-image: linear-gradient(315deg, #380036 -20%, #fff 94%);
   padding: 1em 3em;
 }
 
@@ -135,7 +137,7 @@
 
 .heart-icon:hover,
 .close-icon:hover {
-  opacity: 0.8;
+  opacity: 0.7;
 }
 
 .category {
