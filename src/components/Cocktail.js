@@ -56,11 +56,7 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
           <h3>{cocktail.strDrink}</h3>
           <div className='link' onClick={() => setModal(true)}>See More</div>
         </div>
-        {
-          like
-          ? <HeartIcon className='heart-icon' fill={''} onClick={handleLike} disabled={likeDisabled} />
-          : <HeartIcon className='heart-icon' fill={'evenodd'} onClick={handleLike} disabled={likeDisabled} />
-        }
+        <HeartIcon className='heart-icon' fill={like ? '' : 'evenodd'} onClick={handleLike} disabled={likeDisabled} />
         {
           !loading &&
           <div className='disclaimer'>
@@ -75,11 +71,7 @@ export default function Cocktail({ id = 'https://www.thecocktaildb.com/api/json/
               <section className='main-content'>
                 <article className='data'>
                   <img src={cocktail.strDrinkThumb} alt='' />
-                    {
-                      like
-                        ? <HeartIcon className='heart-icon' fill={''} onClick={handleLike} disabled={likeDisabled} />
-                        : <HeartIcon className='heart-icon' fill={'evenodd'} onClick={handleLike} disabled={likeDisabled} />
-                    }
+                  <HeartIcon className='heart-icon' fill={like ? '' : 'evenodd'} onClick={handleLike} disabled={likeDisabled} />
                   <div className='category'>
                     {cocktail.strCategory}
                   </div>
